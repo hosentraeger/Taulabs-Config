@@ -1,0 +1,249 @@
+<!DOCTYPE UAVObjects>
+<uavobjects>
+    <version>
+        <hardware revision="2" serial="57ff6c064971544938280287" type="4"/>
+        <firmware tag="(no branch)" date="20130303 11:37" hash="30da22dc"/>
+        <gcs tag="RELEASE-12.10.2" date="RELEASE-12.10." hash="RELEASE-"/>
+    </version>
+    <settings>
+        <object id="0x7D555646" name="ActuatorSettings">
+            <description>Settings for the ActuatorModule that controls the channel assignments for the mixer based on AircraftType</description>
+            <field values="400,400,50,50" elements="4" units="Hz" type="uint16" name="ChannelUpdateFreq"/>
+            <field values="1850,1850,1850,1850,1900,1900,1900,1900,1900,1900" elements="10" units="us" type="int16" name="ChannelMax"/>
+            <field values="1070,1070,1070,1070,1000,1000,1000,1000,1000,1000" elements="10" units="us" type="int16" name="ChannelNeutral"/>
+            <field values="1000,1000,1000,1000,1000,1000,1000,1000,1000,1000" elements="10" units="us" type="int16" name="ChannelMin"/>
+            <field values="PWM,PWM,PWM,PWM,PWM,PWM,PWM,PWM,PWM,PWM" elements="10" options="PWM,MK,ASTEC4,PWM Alarm Buzzer" units="" type="enum" name="ChannelType"/>
+            <field values="0,1,2,3,4,5,6,7,8,9" elements="10" units="" type="uint8" name="ChannelAddr"/>
+            <field values="FALSE" elements="1" options="FALSE,TRUE" units="" type="enum" name="MotorsSpinWhileArmed"/>
+        </object>
+        <object id="0xFEC55B42" name="AltitudeHoldSettings">
+            <description>Settings for the AltitudeHold module</description>
+            <field values="0.025" elements="1" units="throttle/m" type="float32" name="Kp"/>
+            <field values="0.025" elements="1" units="throttle/m" type="float32" name="Ki"/>
+            <field values="0.25" elements="1" units="throttle/m" type="float32" name="Kd"/>
+            <field values="0" elements="1" units="throttle/(m/s^2)" type="float32" name="Ka"/>
+            <field values="0.01" elements="1" units="m" type="float32" name="PressureNoise"/>
+            <field values="10" elements="1" units="m/s^2" type="float32" name="AccelNoise"/>
+            <field values="0.001" elements="1" units="m/s^2" type="float32" name="AccelDrift"/>
+        </object>
+        <object id="0x54E8F342" name="AttitudeSettings">
+            <description>Settings for the Attitude module used on CopterControl</description>
+            <field values="0.42" elements="1" units="(rad/s)/lsb" type="float32" name="GyroGain"/>
+            <field values="0.05" elements="1" units="channel" type="float32" name="AccelKp"/>
+            <field values="0.0001" elements="1" units="channel" type="float32" name="AccelKi"/>
+            <field values="0.1" elements="1" units="" type="float32" name="AccelTau"/>
+            <field values="1e-06" elements="1" units="channel" type="float32" name="YawBiasRate"/>
+            <field values="8,7,1" elements="3" units="lsb" type="int16" name="AccelBias"/>
+            <field values="-6500,4563,-1625" elements="3" units="deg/s * 100" type="int16" name="GyroBias"/>
+            <field values="0,0,0" elements="3" units="deg" type="int16" name="BoardRotation"/>
+            <field values="TRUE" elements="1" options="FALSE,TRUE" units="channel" type="enum" name="ZeroDuringArming"/>
+            <field values="TRUE" elements="1" options="FALSE,TRUE" units="channel" type="enum" name="BiasCorrectGyro"/>
+            <field values="NORMAL" elements="1" options="NORMAL,START,LOAD" units="channel" type="enum" name="TrimFlight"/>
+        </object>
+        <object id="0x3B95DDBA" name="CameraStabSettings">
+            <description>Settings for the CameraStab mmodule</description>
+            <field values="1" elements="1" units="deg/s" type="float32" name="MaxAxisLockRate"/>
+            <field values="150,150,150" elements="3" units="ms" type="uint16" name="ResponseTime"/>
+            <field values="None,None,None" elements="3" options="Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5,None" units="channel" type="enum" name="Input"/>
+            <field values="20,20,20" elements="3" units="deg" type="uint8" name="InputRange"/>
+            <field values="50,50,50" elements="3" units="deg/s" type="uint8" name="InputRate"/>
+            <field values="Attitude,Attitude,Attitude" elements="3" options="Attitude,AxisLock" units="" type="enum" name="StabilizationMode"/>
+            <field values="20,20,20" elements="3" units="deg" type="uint8" name="OutputRange"/>
+        </object>
+        <object id="0x2778BA3C" name="FaultSettings">
+            <description>Allows testers to simulate various fault scenarios.</description>
+            <field values="NoFault" elements="1" options="NoFault,ModuleInitAssert,InitOutOfMemory,InitBusError,RunawayTask,TaskOutOfMemory" units="fault" type="enum" name="ActivateFault"/>
+        </object>
+        <object id="0xF172BB18" name="FlightBatterySettings">
+            <description>Flight Battery configuration.</description>
+            <field values="2200" elements="1" units="mAh" type="uint32" name="Capacity"/>
+            <field values="9.8,9.2" elements="2" units="V" type="float32" name="VoltageThresholds"/>
+            <field values="1,1" elements="2" units="" type="float32" name="SensorCalibrations"/>
+            <field values="LiPo" elements="1" options="LiPo,A123,LiCo,LiFeSO4,None" units="" type="enum" name="Type"/>
+            <field values="3" elements="1" units="" type="uint8" name="NbCells"/>
+            <field values="None" elements="1" options="None" units="" type="enum" name="SensorType"/>
+        </object>
+        <object id="0x92E9FF76" name="FlightPlanSettings">
+            <description>Settings for the flight plan module, control the execution of the script</description>
+            <field values="0" elements="1" units="" type="float32" name="Test"/>
+        </object>
+        <object id="0xAC5F6370" name="GPSSettings">
+            <description>Settings for the GPS</description>
+            <field values="UBX" elements="1" options="NMEA,UBX" units="" type="enum" name="DataProtocol"/>
+        </object>
+        <object id="0x6EA79FB4" name="GuidanceSettings">
+            <description>Settings for the GuidanceModule</description>
+            <field values="0.1,0.001,300" elements="3" units="(m/s)/m" type="float32" name="HorizontalPosPI"/>
+            <field values="0.05,0.002,0,1000" elements="4" units="deg/(m/s)" type="float32" name="HorizontalVelPID"/>
+            <field values="0.1,0.001,200" elements="3" units="" type="float32" name="VerticalPosPI"/>
+            <field values="0.1,0,0,0" elements="4" units="" type="float32" name="VerticalVelPID"/>
+            <field values="10" elements="1" units="deg" type="float32" name="MaxRollPitch"/>
+            <field values="100" elements="1" units="" type="int32" name="UpdatePeriod"/>
+            <field values="300" elements="1" units="m/s" type="uint16" name="HorizontalVelMax"/>
+            <field values="150" elements="1" units="m/s" type="uint16" name="VerticalVelMax"/>
+            <field values="DUAL_LOOP" elements="1" options="DUAL_LOOP,VELOCITY_CONTROL" units="" type="enum" name="GuidanceMode"/>
+            <field values="FALSE" elements="1" options="FALSE,TRUE" units="" type="enum" name="ThrottleControl"/>
+        </object>
+        <object id="0x5BB3AEFC" name="HomeLocation">
+            <description>HomeLocation setting which contains the constants to tranlate from longitutde and latitude to NED reference frame.  Automatically set by GPSModule after acquiring a 3D lock.  Used by AHRSCommsModule.</description>
+            <field values="0" elements="1" units="deg * 10e6" type="int32" name="Latitude"/>
+            <field values="0" elements="1" units="deg * 10e6" type="int32" name="Longitude"/>
+            <field values="0" elements="1" units="m over geoid" type="float32" name="Altitude"/>
+            <field values="0,0,0" elements="3" units="cm" type="int32" name="ECEF"/>
+            <field values="0,0,0,0,0,0,0,0,0" elements="9" units="" type="float32" name="RNE"/>
+            <field values="0,0,0" elements="3" units="" type="float32" name="Be"/>
+            <field values="9.81" elements="1" units="m/s^2" type="float32" name="g_e"/>
+            <field values="FALSE" elements="1" options="FALSE,TRUE" units="" type="enum" name="Set"/>
+        </object>
+        <object id="0xA1A9B546" name="HwSettings">
+            <description>Selection of optional hardware configurations.</description>
+            <field values="PWM" elements="1" options="Disabled,PWM,PPM,PPM+PWM,PPM+Outputs,Outputs" units="function" type="enum" name="CC_RcvrPort"/>
+            <field values="Telemetry" elements="1" options="Disabled,Telemetry,GPS,S.Bus,DSM2,DSMX (10bit),DSMX (11bit),ComAux,ComBridge" units="function" type="enum" name="CC_MainPort"/>
+            <field values="Disabled" elements="1" options="Disabled,Telemetry,GPS,I2C,DSM2,DSMX (10bit),DSMX (11bit),ComAux,ComBridge" units="function" type="enum" name="CC_FlexiPort"/>
+            <field values="PWM" elements="1" options="Disabled,PWM,PPM,PPM+Outputs,Outputs" units="function" type="enum" name="RV_RcvrPort"/>
+            <field values="Disabled" elements="1" options="Disabled,Telemetry,DSM2,DSMX (10bit),DSMX (11bit),ComAux,ComBridge" units="function" type="enum" name="RV_AuxPort"/>
+            <field values="Disabled" elements="1" options="Disabled,S.Bus,DSM2,DSMX (10bit),DSMX (11bit),ComAux,ComBridge" units="function" type="enum" name="RV_AuxSBusPort"/>
+            <field values="Disabled" elements="1" options="Disabled,I2C,DSM2,DSMX (10bit),DSMX (11bit),ComAux,ComBridge" units="function" type="enum" name="RV_FlexiPort"/>
+            <field values="Telemetry" elements="1" options="Disabled,Telemetry,ComAux,ComBridge" units="function" type="enum" name="RV_TelemetryPort"/>
+            <field values="GPS" elements="1" options="Disabled,Telemetry,GPS,ComAux,ComBridge" units="function" type="enum" name="RV_GPSPort"/>
+            <field values="57600" elements="1" options="2400,4800,9600,19200,38400,57600,115200" units="bps" type="enum" name="TelemetrySpeed"/>
+            <field values="57600" elements="1" options="2400,4800,9600,19200,38400,57600,115200" units="bps" type="enum" name="GPSSpeed"/>
+            <field values="57600" elements="1" options="2400,4800,9600,19200,38400,57600,115200" units="bps" type="enum" name="ComUsbBridgeSpeed"/>
+            <field values="USBTelemetry" elements="1" options="USBTelemetry,RCTransmitter,Disabled" units="function" type="enum" name="USB_HIDPort"/>
+            <field values="Disabled" elements="1" options="USBTelemetry,ComBridge,Disabled" units="function" type="enum" name="USB_VCPPort"/>
+            <field values="Disabled,Disabled,Disabled,Disabled,Disabled,Disabled,Disabled" elements="7" options="Disabled,Enabled" units="" type="enum" name="OptionalModules"/>
+            <field values="0" elements="1" units="" type="uint8" name="DSMxBind"/>
+        </object>
+        <object id="0xA240D466" name="ManualControlSettings">
+            <description>Settings to indicate how to decode receiver input by ManualControlModule.</description>
+            <field values="0" elements="1" units="%" type="float32" name="Deadband"/>
+            <field values="973,972,1975,973,972,0,972,0,0" elements="9" units="us" type="int16" name="ChannelMin"/>
+            <field values="993,1470,1472,1471,1473,0,1444,0,0" elements="9" units="us" type="int16" name="ChannelNeutral"/>
+            <field values="1976,1974,973,1975,1976,0,1975,0,0" elements="9" units="us" type="int16" name="ChannelMax"/>
+            <field values="30000" elements="1" units="ms" type="uint16" name="ArmedTimeout"/>
+            <field values="PWM,PWM,PWM,PWM,PWM,None,PWM,None,None" elements="9" options="PWM,PPM,DSM (MainPort),DSM (FlexiPort),S.Bus,GCS,None" units="Channel Group" type="enum" name="ChannelGroups"/>
+            <field values="3,1,2,4,5,0,6,0,0" elements="9" units="channel" type="uint8" name="ChannelNumber"/>
+            <field values="Yaw Right" elements="1" options="Always Disarmed,Always Armed,Roll Left,Roll Right,Pitch Forward,Pitch Aft,Yaw Left,Yaw Right" units="" type="enum" name="Arming"/>
+            <field values="Attitude,Attitude,AxisLock" elements="3" options="None,Rate,Attitude,AxisLock,WeakLeveling,VirtualBar,RelayRate,RelayAttitude" units="" type="enum" name="Stabilization1Settings"/>
+            <field values="Attitude,Attitude,Rate" elements="3" options="None,Rate,Attitude,AxisLock,WeakLeveling,VirtualBar,RelayRate,RelayAttitude" units="" type="enum" name="Stabilization2Settings"/>
+            <field values="Rate,Rate,Rate" elements="3" options="None,Rate,Attitude,AxisLock,WeakLeveling,VirtualBar,RelayRate,RelayAttitude" units="" type="enum" name="Stabilization3Settings"/>
+            <field values="3" elements="1" units="" type="uint8" name="FlightModeNumber"/>
+            <field values="Stabilized1,Stabilized1,Stabilized1,Stabilized1,Stabilized1,Stabilized1" elements="6" options="Manual,Stabilized1,Stabilized2,Stabilized3,Autotune,AltitudeHold,VelocityControl,PositionHold" units="" type="enum" name="FlightModePosition"/>
+        </object>
+        <object id="0x5D16D6C4" name="MixerSettings">
+            <description>Settings for the ActuatorModule that controls the channel assignments for the mixer based on AircraftType</description>
+            <field values="1000" elements="1" units="units/sec" type="float32" name="MaxAccel"/>
+            <field values="0" elements="1" units="" type="float32" name="FeedForward"/>
+            <field values="0" elements="1" units="ms" type="float32" name="AccelTime"/>
+            <field values="0" elements="1" units="ms" type="float32" name="DecelTime"/>
+            <field values="0,0.25,0.5,0.75,1" elements="5" units="percent" type="float32" name="ThrottleCurve1"/>
+            <field values="0,0.25,0.5,0.75,1" elements="5" units="percent" type="float32" name="ThrottleCurve2"/>
+            <field values="Throttle" elements="1" options="Throttle,Roll,Pitch,Yaw,Collective,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="" type="enum" name="Curve2Source"/>
+            <field values="Motor" elements="1" options="Disabled,Motor,Servo,CameraRoll,CameraPitch,CameraYaw,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="" type="enum" name="Mixer1Type"/>
+            <field values="127,0,63,63,-63" elements="5" units="" type="int8" name="Mixer1Vector"/>
+            <field values="Motor" elements="1" options="Disabled,Motor,Servo,CameraRoll,CameraPitch,CameraYaw,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="" type="enum" name="Mixer2Type"/>
+            <field values="127,0,-63,63,63" elements="5" units="" type="int8" name="Mixer2Vector"/>
+            <field values="Motor" elements="1" options="Disabled,Motor,Servo,CameraRoll,CameraPitch,CameraYaw,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="" type="enum" name="Mixer3Type"/>
+            <field values="127,0,-63,-63,-63" elements="5" units="" type="int8" name="Mixer3Vector"/>
+            <field values="Motor" elements="1" options="Disabled,Motor,Servo,CameraRoll,CameraPitch,CameraYaw,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="" type="enum" name="Mixer4Type"/>
+            <field values="127,0,63,-63,63" elements="5" units="" type="int8" name="Mixer4Vector"/>
+            <field values="Disabled" elements="1" options="Disabled,Motor,Servo,CameraRoll,CameraPitch,CameraYaw,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="" type="enum" name="Mixer5Type"/>
+            <field values="0,0,0,0,0" elements="5" units="" type="int8" name="Mixer5Vector"/>
+            <field values="Disabled" elements="1" options="Disabled,Motor,Servo,CameraRoll,CameraPitch,CameraYaw,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="" type="enum" name="Mixer6Type"/>
+            <field values="0,0,0,0,0" elements="5" units="" type="int8" name="Mixer6Vector"/>
+            <field values="Disabled" elements="1" options="Disabled,Motor,Servo,CameraRoll,CameraPitch,CameraYaw,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="" type="enum" name="Mixer7Type"/>
+            <field values="0,0,0,0,0" elements="5" units="" type="int8" name="Mixer7Vector"/>
+            <field values="Disabled" elements="1" options="Disabled,Motor,Servo,CameraRoll,CameraPitch,CameraYaw,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="" type="enum" name="Mixer8Type"/>
+            <field values="0,0,0,0,0" elements="5" units="" type="int8" name="Mixer8Vector"/>
+            <field values="Disabled" elements="1" options="Disabled,Motor,Servo,CameraRoll,CameraPitch,CameraYaw,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="" type="enum" name="Mixer9Type"/>
+            <field values="0,0,0,0,0" elements="5" units="" type="int8" name="Mixer9Vector"/>
+            <field values="Disabled" elements="1" options="Disabled,Motor,Servo,CameraRoll,CameraPitch,CameraYaw,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="" type="enum" name="Mixer10Type"/>
+            <field values="0,0,0,0,0" elements="5" units="" type="int8" name="Mixer10Vector"/>
+        </object>
+        <object id="0xBA192BCA" name="PipXSettings">
+            <description>PipXtreme configurations options.</description>
+            <field values="0" elements="1" units="" type="uint32" name="PairID"/>
+            <field values="434000000" elements="1" units="" type="uint32" name="Frequency"/>
+            <field values="50" elements="1" units="ms" type="uint16" name="SendTimeout"/>
+            <field values="UAVTalk" elements="1" options="Disabled,Serial,UAVTalk,GCS,Debug" units="function" type="enum" name="TelemetryConfig"/>
+            <field values="57600" elements="1" options="2400,4800,9600,19200,38400,57600,115200" units="bps" type="enum" name="TelemetrySpeed"/>
+            <field values="Disabled" elements="1" options="Disabled,Serial,UAVTalk,GCS,PPM_In,PPM_Out,RSSI,Debug" units="function" type="enum" name="FlexiConfig"/>
+            <field values="57600" elements="1" options="2400,4800,9600,19200,38400,57600,115200" units="bps" type="enum" name="FlexiSpeed"/>
+            <field values="Disabled" elements="1" options="Disabled,Serial,Debug" units="function" type="enum" name="VCPConfig"/>
+            <field values="57600" elements="1" options="2400,4800,9600,19200,38400,57600,115200" units="bps" type="enum" name="VCPSpeed"/>
+            <field values="115200" elements="1" options="2400,4800,9600,19200,38400,57600,115200" units="bps" type="enum" name="RFSpeed"/>
+            <field values="100" elements="1" options="1.25,1.6,3.16,6.3,12.6,25,50,100" units="mW" type="enum" name="MaxRFPower"/>
+            <field values="50" elements="1" units="bytes" type="uint8" name="MinPacketSize"/>
+            <field values="127" elements="1" units="" type="uint8" name="FrequencyCalibration"/>
+            <field values="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" elements="32" units="" type="uint8" name="AESKey"/>
+        </object>
+        <object id="0xEA358166" name="RelayTuningSettings">
+            <description>Setting to run a relay tuning algorithm</description>
+            <field values="0.3333" elements="1" units="" type="float32" name="RateGain"/>
+            <field values="0.2" elements="1" units="" type="float32" name="AttitudeGain"/>
+            <field values="0.25" elements="1" units="" type="float32" name="Amplitude"/>
+            <field values="5" elements="1" units="deg/s" type="uint8" name="HysteresisThresh"/>
+            <field values="Attitude" elements="1" options="Rate,Attitude" units="" type="enum" name="Mode"/>
+            <field values="Compute" elements="1" options="Measure,Compute,Save" units="" type="enum" name="Behavior"/>
+        </object>
+        <object id="0xC26D37B2" name="RevoCalibration">
+            <description>Settings for the INS to control the algorithm and what is updated</description>
+            <field values="0,0,0" elements="3" units="m/s" type="float32" name="accel_bias"/>
+            <field values="1,1,1" elements="3" units="gain" type="float32" name="accel_scale"/>
+            <field values="1,1,1" elements="3" units="(m/s)^2" type="float32" name="accel_var"/>
+            <field values="0,0,0" elements="3" units="deg/s" type="float32" name="gyro_bias"/>
+            <field values="1,1,1" elements="3" units="gain" type="float32" name="gyro_scale"/>
+            <field values="1,1,1" elements="3" units="(deg/s)^2" type="float32" name="gyro_var"/>
+            <field values="1,1,1" elements="3" units="(deg/s)/deg" type="float32" name="gyro_tempcoeff"/>
+            <field values="0,0,0" elements="3" units="mGau" type="float32" name="mag_bias"/>
+            <field values="1,1,1" elements="3" units="gain" type="float32" name="mag_scale"/>
+            <field values="50,50,50" elements="3" units="mGau^2" type="float32" name="mag_var"/>
+            <field values="TRUE" elements="1" options="TRUE,FALSE" units="" type="enum" name="BiasCorrectedRaw"/>
+        </object>
+        <object id="0x58275D66" name="StabilizationSettings">
+            <description>PID settings used by the Stabilization module to combine the AttitudeActual and AttitudeDesired to compute ActuatorDesired</description>
+            <field values="150,150,150" elements="3" units="degrees/sec" type="float32" name="ManualRate"/>
+            <field values="300,300,300" elements="3" units="degrees/sec" type="float32" name="MaximumRate"/>
+            <field values="0.002,0,0,0.3" elements="4" units="" type="float32" name="RollRatePID"/>
+            <field values="0.002,0,0,0.3" elements="4" units="" type="float32" name="PitchRatePID"/>
+            <field values="0.0035,0.0035,0,0.3" elements="4" units="" type="float32" name="YawRatePID"/>
+            <field values="2,0,50" elements="3" units="" type="float32" name="RollPI"/>
+            <field values="2,0,50" elements="3" units="" type="float32" name="PitchPI"/>
+            <field values="2,0,50" elements="3" units="" type="float32" name="YawPI"/>
+            <field values="0.5,0.5,0.5" elements="3" units="frac" type="float32" name="VbarSensitivity"/>
+            <field values="0.005,0.002" elements="2" units="1/(deg/s)" type="float32" name="VbarRollPI"/>
+            <field values="0.005,0.002" elements="2" units="1/(deg/s)" type="float32" name="VbarPitchPI"/>
+            <field values="0.005,0.002" elements="2" units="1/(deg/s)" type="float32" name="VbarYawPI"/>
+            <field values="0.5" elements="1" units="sec" type="float32" name="VbarTau"/>
+            <field values="0.005" elements="1" units="" type="float32" name="GyroTau"/>
+            <field values="1" elements="1" units="" type="float32" name="DerivativeGamma"/>
+            <field values="0.1" elements="1" units="(deg/s)/deg" type="float32" name="WeakLevelingKp"/>
+            <field values="55" elements="1" units="degrees" type="uint8" name="RollMax"/>
+            <field values="55" elements="1" units="degrees" type="uint8" name="PitchMax"/>
+            <field values="35" elements="1" units="degrees" type="uint8" name="YawMax"/>
+            <field values="30" elements="1" units="%" type="int8" name="VbarGyroSuppress"/>
+            <field values="FALSE" elements="1" options="FALSE,TRUE" units="" type="enum" name="VbarPiroComp"/>
+            <field values="10" elements="1" units="deg" type="uint8" name="VbarMaxAngle"/>
+            <field values="20" elements="1" units="Hz" type="uint8" name="DerivativeCutoff"/>
+            <field values="15" elements="1" units="deg" type="uint8" name="MaxAxisLock"/>
+            <field values="2" elements="1" units="deg/s" type="uint8" name="MaxAxisLockRate"/>
+            <field values="5" elements="1" units="deg/s" type="uint8" name="MaxWeakLevelingRate"/>
+            <field values="TRUE" elements="1" options="FALSE,TRUE" units="" type="enum" name="LowThrottleZeroIntegral"/>
+            <field values="FALSE,FALSE,FALSE" elements="3" options="FALSE,TRUE" units="" type="enum" name="LowThrottleZeroAxis"/>
+        </object>
+        <object id="0xC72A326E" name="SystemSettings">
+            <description>Select airframe type.  Currently used by ActuatorModule to choose mixing from ActuatorDesired to ActuatorCommand</description>
+            <field values="874577920,0,0,0" elements="4" units="bits" type="uint32" name="GUIConfigData"/>
+            <field values="QuadX" elements="1" options="FixedWing,FixedWingElevon,FixedWingVtail,VTOL,HeliCP,QuadX,QuadP,Hexa,Octo,Custom,HexaX,OctoV,OctoCoaxP,OctoCoaxX,HexaCoax,Tri,GroundVehicleCar,GroundVehicleDifferential,GroundVehicleMotorcycle" units="" type="enum" name="AirframeType"/>
+        </object>
+        <object id="0x42B2D2AE" name="TxPIDSettings">
+            <description>Settings used by TxPID optional module to tune PID settings using R/C transmitter</description>
+            <field values="0.2,0.8" elements="2" units="%" type="float32" name="ThrottleRange"/>
+            <field values="0,0,0" elements="3" units="" type="float32" name="MinPID"/>
+            <field values="0,0,0" elements="3" units="" type="float32" name="MaxPID"/>
+            <field values="When Armed" elements="1" options="Never,When Armed,Always" units="option" type="enum" name="UpdateMode"/>
+            <field values="Throttle,Accessory0,Accessory1" elements="3" options="Throttle,Accessory0,Accessory1,Accessory2,Accessory3,Accessory4,Accessory5" units="channel" type="enum" name="Inputs"/>
+            <field values="Disabled,Disabled,Disabled" elements="3" options="Disabled,Roll Rate.Kp,Pitch Rate.Kp,Roll+Pitch Rate.Kp,Yaw Rate.Kp,Roll Rate.Ki,Pitch Rate.Ki,Roll+Pitch Rate.Ki,Yaw Rate.Ki,Roll Rate.Kd,Pitch Rate.Kd,Roll+Pitch Rate.Kd,Yaw Rate.Kd,Roll Rate.ILimit,Pitch Rate.ILimit,Roll+Pitch Rate.ILimit,Yaw Rate.ILimit,Roll Attitude.Kp,Pitch Attitude.Kp,Roll+Pitch Attitude.Kp,Yaw Attitude.Kp,Roll Attitude.Ki,Pitch Attitude.Ki,Roll+Pitch Attitude.Ki,Yaw Attitude.Ki,Roll Attitude.ILimit,Pitch Attitude.ILimit,Roll+Pitch Attitude.ILimit,Yaw Attitude.ILimit,GyroTau" units="option" type="enum" name="PIDs"/>
+        </object>
+    </settings>
+</uavobjects>
